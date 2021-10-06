@@ -8,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  private url  = 'https://localhost:44376/User/getDetails'
+  private url  = 'http://localhost/StepperAPI/User/GetAllSkills'
+
+  test! : string
 
   constructor(private http : HttpClient) { }
 
@@ -17,6 +19,7 @@ export class HomeComponent implements OnInit {
     
       let result = this.http.get<string>(this.url).subscribe(s => {
         console.log(s);
+        
       });
    
 
