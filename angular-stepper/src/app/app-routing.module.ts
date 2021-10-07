@@ -5,7 +5,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { TeamDetailComponent } from './team-detail/team-detail.component';
 
 const routes: Routes = [
-  { path : '' , component : TeamDetailComponent },
+  { path : '' , redirectTo : '/teamDetail', pathMatch : "full" },
   { path : 'teamDetail' , component : TeamDetailComponent },
   { path : 'manageTeam' , component : ManageTeamComponent },
   { path : '**' , component : NotFoundComponent }

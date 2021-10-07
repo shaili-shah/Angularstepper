@@ -1,1 +1,15 @@
-<p>manage-team works!</p>
+<mat-horizontal-stepper linear #stepper>
+	<mat-step [stepControl]="personalDetailForm">
+		<ng-template matStepLabel>Personal Details</ng-template>
+		<personal-details #step1></personal-details>
+	</mat-step>
+	<mat-step [stepControl]="bankDetailForm">
+		<ng-template matStepLabel>Bank Details</ng-template>
+    <bank-detail #step2></bank-detail>
+	</mat-step>
+	<mat-step [stepControl]="professionalDetailForm">
+		<ng-template matStepLabel>Professional Details</ng-template>
+    <professional-details #step3></professional-details>
+	</mat-step>
+</mat-horizontal-stepper>
+

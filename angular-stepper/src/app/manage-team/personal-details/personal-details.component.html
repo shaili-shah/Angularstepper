@@ -1,0 +1,59 @@
+<mat-card>
+  <form [formGroup]="personalDetailFormGroup">
+
+    <mat-form-field>
+      <input matInput placeholder="First name" name="firstName" formControlName="firstName" required>
+      <mat-error *ngIf="f.firstName.errors?.required">
+        First Name is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Last name" formControlName="lastName" name="lastName" required>
+      <mat-error *ngIf="f.lastName.errors?.required">
+        Last Name is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker3" autocomplete="off" [max]="today" formControlName="birthDate"
+        placeholder="Date Of Birth" required>
+      <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+      <mat-datepicker #picker3 color="primary"></mat-datepicker>
+      <mat-error *ngIf="f.birthDate.errors?.required">
+        Date Of Birth is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Phone" 
+      formControlName="phone"
+       name="phone" 
+       pattern="^(0|[1-9][0-9]*)$"
+       required>
+      <mat-error *ngIf="f.phone.errors?.required">
+        Phone is required
+      </mat-error>
+      <mat-error *ngIf="f.phone.errors?.pattern">
+        Phone is invalid
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Email" formControlName="email" name="email"
+        pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required>
+      <mat-error *ngIf="f.email.errors?.required">
+        Email is required
+      </mat-error>
+
+      <mat-error *ngIf="f.email.errors?.pattern">
+        Please enter a valid email address
+      </mat-error>
+    </mat-form-field>
+
+    <mat-card-actions>
+      <button mat-raised-button matStepperNext class="nav-btn pull-right">Next</button>
+    </mat-card-actions>
+
+  </form>
+</mat-card>
