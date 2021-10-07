@@ -8,7 +8,6 @@ import { TeamDetailComponent } from './team-detail/team-detail.component';
 import { ManageTeamComponent } from './manage-team/manage-team.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FilterPipe } from './filter.pipe';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -16,8 +15,7 @@ import { FormsModule } from '@angular/forms';
     AppComponent,
     TeamDetailComponent,
     ManageTeamComponent,
-    NotFoundComponent,
-    FilterPipe
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

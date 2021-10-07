@@ -15,7 +15,6 @@ export class TeamDetailComponent implements OnInit {
   page = 1;
   pageSize = 4;
   collectionSize!: number;
-  currentRate = 8;
   employees!: TeamGridModel[];
   allEmployees!: TeamGridModel[];
 
@@ -25,11 +24,12 @@ export class TeamDetailComponent implements OnInit {
   ngOnInit(): void {
 
     this.service.getAllEmployees()
-      .subscribe((data: TeamGridModel[]) => {
-        this.collectionSize = data.length;
-        this.employees = data;
-        this.allEmployees = this.employees;
+      .subscribe((data) => {
        
+        this.collectionSize = data.length;
+       this.employees = data;
+       console.log(this.employees);
+       this.allEmployees = this.employees;
       });
   }
 
