@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
 import { TeamDetailComponent } from './team-detail/team-detail.component';
 import { ManageTeamComponent } from './manage-team/manage-team.component';
 import { NotFoundComponent } from './not-found/not-found.component';
@@ -15,7 +14,6 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     TeamDetailComponent,
     ManageTeamComponent,
     NotFoundComponent,

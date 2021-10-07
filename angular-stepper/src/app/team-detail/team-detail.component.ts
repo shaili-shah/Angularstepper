@@ -17,7 +17,7 @@ export class TeamDetailComponent implements OnInit {
   collectionSize!: number;
   currentRate = 8;
   employees!: TeamGridModel[];
-  allEmps!: TeamGridModel[];
+  allEmployees!: TeamGridModel[];
 
   constructor(private http: HttpClient ,private service : TeamService) {
    }
@@ -28,14 +28,14 @@ export class TeamDetailComponent implements OnInit {
       .subscribe((data: TeamGridModel[]) => {
         this.collectionSize = data.length;
         this.employees = data;
-        this.allEmps = this.employees;
+        this.allEmployees = this.employees;
        
       });
   }
 
   search(value: any): void {
    let searchVal  = value.data || "";
-    this.employees = this.allEmps.filter((val) => val.FirstName.toLowerCase().includes(searchVal));
+    this.employees = this.allEmployees.filter((val) => val.FirstName.toLowerCase().includes(searchVal));
     this.collectionSize = this.employees.length;
   }
 

@@ -14,7 +14,7 @@ export class TeamService  {
    }
 
    getAllEmployees(): Observable<any> {
-    return this.http.get(this.baseUrl + "/User/GetPersonalDetail");
+    return this.http.get(`${this.baseUrl}/User/GetPersonalDetail`);
   }
 
    

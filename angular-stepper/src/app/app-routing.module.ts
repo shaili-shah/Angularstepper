@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
 import { ManageTeamComponent } from './manage-team/manage-team.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { TeamDetailComponent } from './team-detail/team-detail.component';
 
 const routes: Routes = [
-  { path : '' , component : HomeComponent },
+  { path : '' , component : TeamDetailComponent },
   { path : 'teamDetail' , component : TeamDetailComponent },
   { path : 'manageTeam' , component : ManageTeamComponent },
   { path : '**' , component : NotFoundComponent }
