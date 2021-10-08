@@ -17,5 +17,9 @@ export class TeamService  {
     return this.http.get(`${this.baseUrl}/User/GetPersonalDetail`);
   }
 
+  getAllSkills(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/User/GetAllSkills`);
+  }
+
    
 }

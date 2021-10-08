@@ -17,6 +17,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { PersonalDetailsComponent } from './manage-team/personal-details/personal-details.component';
 import { BankDetailComponent } from './manage-team/bank-detail/bank-detail.component';
@@ -54,6 +55,7 @@ import { StepperFooterComponent } from './manage-team/stepper-footer/stepper-foo
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatSelectModule
    
    
    

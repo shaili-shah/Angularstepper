@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SkillModel } from 'src/app/Models/SkillModel';
+import { TeamService } from 'src/app/services/team.service';
 
 @Component({
   selector: 'professional-details',
@@ -8,13 +10,22 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ProfessionalDetailsComponent implements OnInit {
 
-  professionalDetailFormGroup! : FormGroup
-  constructor(private formBuilder : FormBuilder) { }
+  skillList!: SkillModel[];
+  professionalDetailFormGroup!: FormGroup
+  constructor(private formBuilder: FormBuilder, private service: TeamService) { }
 
   ngOnInit(): void {
     this.professionalDetailFormGroup = this.formBuilder.group({
-      age: ['', Validators.required]
-  });
+      month: [''],
+      year: [''],
+      skillIds: ['']
+    });
+
+    this.service.getAllSkills().subscribe(data => {
+      this.skillList = data;
+    });
+
   }
+
 
 }
