@@ -14,8 +14,15 @@ export class BankDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.bankDetailFormGroup = this.formBuilder.group({
-      secondCtrl: ['', Validators.required]
+      AadharCardNo: ['', Validators.required],
+      AccountNo : ['',Validators.required],
+      IFSC : ['',Validators.required],
+      PanCardNo : ['',Validators.required]
     });
+  }
+
+  get f(){
+    return this.bankDetailFormGroup.controls;
   }
 
 }

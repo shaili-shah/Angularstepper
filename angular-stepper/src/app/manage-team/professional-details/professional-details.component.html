@@ -1,14 +1,14 @@
-
 <mat-card>
 
 	<form [formGroup]="professionalDetailFormGroup">
 
-        <mat-form-field>
-            <input matInput placeholder="Age" formControlName="age" required>
-        </mat-form-field>
-	
-  	<mat-card-actions>
-            <button mat-raised-button matStepperPrevious>Back</button>
+		<mat-form-field>
+			<input matInput placeholder="Age" formControlName="age" required>
+		</mat-form-field>
+
+		<stepper-footer></stepper-footer>
+		<mat-card-actions>
+			<button mat-raised-button matStepperPrevious>Back</button>
 			<button mat-raised-button class="nav-btn pull-right">Finish</button>
 		</mat-card-actions>
 

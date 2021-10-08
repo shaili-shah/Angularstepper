@@ -22,6 +22,7 @@ import { PersonalDetailsComponent } from './manage-team/personal-details/persona
 import { BankDetailComponent } from './manage-team/bank-detail/bank-detail.component';
 import { ProfessionalDetailsComponent } from './manage-team/professional-details/professional-details.component';
 import { MatNativeDateModule } from '@angular/material/core';
+import { StepperFooterComponent } from './manage-team/stepper-footer/stepper-footer.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     NotFoundComponent,
     PersonalDetailsComponent,
     BankDetailComponent,
-    ProfessionalDetailsComponent
+    ProfessionalDetailsComponent,
+    StepperFooterComponent
   
   ],
   imports: [
