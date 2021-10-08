@@ -1,6 +1,10 @@
 <mat-card>
   <form [formGroup]="personalDetailFormGroup">
 
+    <input #file type="file"  (change)="preview(file.files)" formControlName="image" />
+    <img src="{{imgURL}}" height="200" *ngIf="imgURL">
+    <mat-error *ngIf="f.image.errors?.invalid">Invalid File</mat-error>
+
     <mat-form-field>
       <input matInput placeholder="First name" name="firstName" formControlName="firstName" required>
       <mat-error *ngIf="f.firstName.errors?.required">
@@ -26,11 +30,7 @@
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Phone" 
-      formControlName="phone"
-       name="phone" 
-       pattern="^(0|[1-9][0-9]*)$"
-       required>
+      <input matInput placeholder="Phone" formControlName="phone" name="phone" pattern="^(0|[1-9][0-9]*)$" required>
       <mat-error *ngIf="f.phone.errors?.required">
         Phone is required
       </mat-error>
