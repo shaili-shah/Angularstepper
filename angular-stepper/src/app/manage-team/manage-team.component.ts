@@ -1,8 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { BankDetailComponent } from './bank-detail/bank-detail.component';
-import { PersonalDetailsComponent } from './personal-details/personal-details.component';
-import { ProfessionalDetailsComponent } from './professional-details/professional-details.component';
 
 @Component({
   selector: 'app-manage-team',
@@ -37,7 +34,16 @@ export class ManageTeamComponent implements OnInit{
       professionalDetailFormGroup : this.formBuilder.group({
         month: [''],
         year: [''],
-        skillIds: ['']
+        skillIds: [''],
+        resume : ['']
+      }),
+
+      currentStatusFormGroup : this.formBuilder.group({
+        CTC : [''],
+        Company : ['',Validators.required],
+        Department : ['',Validators.required],
+        Designation : ['',Validators.required],
+        WorkingFrom : ['',Validators.required]
       })
 
     })

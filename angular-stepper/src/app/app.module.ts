@@ -24,6 +24,7 @@ import { BankDetailComponent } from './manage-team/bank-detail/bank-detail.compo
 import { ProfessionalDetailsComponent } from './manage-team/professional-details/professional-details.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { StepperFooterComponent } from './manage-team/stepper-footer/stepper-footer.component';
+import { CurrentStatusComponent } from './manage-team/current-status/current-status.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { StepperFooterComponent } from './manage-team/stepper-footer/stepper-foo
     PersonalDetailsComponent,
     BankDetailComponent,
     ProfessionalDetailsComponent,
-    StepperFooterComponent
+    StepperFooterComponent,
+    CurrentStatusComponent
   
   ],
   imports: [

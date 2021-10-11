@@ -13,32 +13,11 @@
 				<ng-template matStepLabel>Professional Details</ng-template>
 			<professional-details [empForm] = "employeeForm"></professional-details>
 			</mat-step>
+			<mat-step [stepControl]="employeeForm.get('currentStatusFormGroup')?.value" formGroupName = "currentStatusFormGroup">
+				<ng-template matStepLabel>Current Status</ng-template>
+				<current-status [empForm] = "employeeForm"></current-status>
+			</mat-step>
+			
 		</mat-horizontal-stepper>
 	</form>
 </div>
-
-
-
-
-
-
-
-
-<!-- <div id="employee">
-	<form id="empForm" [formGroup] = "employeeForm">
-		<mat-horizontal-stepper linear #stepper>
-			<mat-step [stepControl]="personalDetailForm" formGroupName = "personalDetailFormGroup" >
-				<ng-template matStepLabel>Personal Details</ng-template>
-				<personal-details [empForm] = "employeeForm"></personal-details>
-			</mat-step>
-			<mat-step [stepControl]="bankDetailForm" formGroupName = "bankDetailFormGroup">
-				<ng-template matStepLabel>Bank Details</ng-template>
-			<bank-detail [empForm] = "employeeForm"></bank-detail>
-			</mat-step>
-			<mat-step [stepControl]="professionalDetailForm" formGroupName = "professionalDetailFormGroup">
-				<ng-template matStepLabel>Professional Details</ng-template>
-			<professional-details [empForm] = "employeeForm"></professional-details>
-			</mat-step>
-		</mat-horizontal-stepper>
-	</form>
-</div> -->

@@ -1,14 +1,24 @@
 <div id="professional-detail" [formGroup]="empForm">
 	<mat-card>
+
+		<div formGroupName="professionalDetailFormGroup">
+			<label for="" class="set-label">Resume</label> 
+			<input type="file" formControlName="resume" />
+		  </div>
+	  
 		<div formGroupName="professionalDetailFormGroup">
 			<mat-form-field>
-				<input matInput placeholder="Months" formControlName="month">
+				<input matInput placeholder="Months" 
+				formControlName="month" 
+				type="number">
 			</mat-form-field>
 		</div>
 
 		<div formGroupName="professionalDetailFormGroup">
 			<mat-form-field>
-				<input matInput placeholder="Years" formControlName="year">
+				<input matInput placeholder="Years" 
+				formControlName="year"
+				type="number">
 			</mat-form-field>
 		</div>
 
@@ -23,7 +33,8 @@
 		<stepper-footer></stepper-footer>
 		<mat-card-actions>
 			<button mat-raised-button matStepperPrevious>Back</button>
-			<button mat-raised-button class="nav-btn pull-right" (click)="submit()"  >Finish</button>
+			<button mat-raised-button matStepperNext class="nav-btn pull-right">Next</button>
+			<!-- <button mat-raised-button class="nav-btn pull-right" (click)="submit()"  >Finish</button> -->
 		</mat-card-actions>
 	</mat-card>
 

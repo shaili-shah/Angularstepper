@@ -3,6 +3,7 @@
   <mat-card>
 
     <div formGroupName="personalDetailFormGroup">
+      <label for="" class="set-label">Image</label>
       <input #file type="file" (change)="preview(file.files)" formControlName="image" />
       <img src="{{imgURL}}" height="200" *ngIf="imgURL">
       <mat-error *ngIf="f.image.errors?.invalid">Invalid File</mat-error>
