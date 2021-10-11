@@ -27,7 +27,6 @@ export class PersonalDetailsComponent implements OnInit {
     let result = requiredFileType('png', this.file!);
     if (result?.requiredFileType) {
       this.empForm.get('personalDetailFormGroup').controls.image?.setErrors({ invalid: 'Invalid File' });
-     // this.personalDetailFormGroup.get('image')?.setErrors({ invalid: 'Invalid File' });
     }
 
     if (file) {
@@ -36,7 +35,6 @@ export class PersonalDetailsComponent implements OnInit {
       reader.readAsBinaryString(file);
     }
     this.empForm.get('personalDetailFormGroup').value.image  = file;
-    //this.personalDetailFormGroup.value.image = file;
   }
 
   _handleReaderLoaded(readerEvt: any) {
@@ -48,19 +46,10 @@ export class PersonalDetailsComponent implements OnInit {
     private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    // this.personalDetailFormGroup = this.formBuilder.group({
-    //   firstName: ['', Validators.required],
-    //   lastName: ['', Validators.required],
-    //   birthDate: ['', Validators.required],
-    //   phone: ['', Validators.required],
-    //   email: ['', Validators.required],
-    //   image: ['']
-    // });
   }
 
   get f() {
     return this.empForm.controls.personalDetailFormGroup.controls;
-   // return this.personalDetailFormGroup.controls;
   }
 
   preview(files: any) {

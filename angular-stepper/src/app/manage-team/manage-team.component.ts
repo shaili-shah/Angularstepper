@@ -13,24 +13,6 @@ export class ManageTeamComponent implements OnInit{
 
   employeeForm! : FormGroup
 
-  @ViewChild('PersonalDetailComponent') personalDetailComponent!: PersonalDetailsComponent;
-  @ViewChild('BankDetailComponent') bankDetailComponent!: BankDetailComponent;
-  @ViewChild('ProfessionalDetailsComponent') professionalDetailsComponent! : ProfessionalDetailsComponent
-
-
-  // get personalDetailForm() {
-  //   return this.personalDetailComponent ? this.personalDetailComponent.personalDetailFormGroup : this.personalDetailComponent;
-  // }
-
-  // get bankDetailForm() {
-  //   return this.bankDetailComponent ? this.bankDetailComponent.bankDetailFormGroup : this.bankDetailComponent;
-  // }
-
-  // get professionalDetailForm(){
-  //   return this.professionalDetailsComponent ? this.professionalDetailsComponent.professionalDetailFormGroup : this.professionalDetailsComponent;
-  // }
-
-
   constructor(private formBuilder : FormBuilder) { }
 
   ngOnInit() : void{

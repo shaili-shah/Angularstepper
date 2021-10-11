@@ -9,22 +9,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class BankDetailComponent implements OnInit {
 
   @Input('empForm') empForm! : any;
-  //bankDetailFormGroup! : FormGroup
 
   constructor(private formBuilder : FormBuilder) { }
 
   ngOnInit(): void {
-    // this.bankDetailFormGroup = this.formBuilder.group({
-    //   AadharCardNo: ['', Validators.required],
-    //   AccountNo : ['',Validators.required],
-    //   IFSC : ['',Validators.required],
-    //   PanCardNo : ['',Validators.required]
-    // });
   }
-
-  // get f(){
-  //   return this.bankDetailFormGroup.controls;
-  // }
 
   get f(){
     return this.empForm.controls.bankDetailFormGroup.controls;
