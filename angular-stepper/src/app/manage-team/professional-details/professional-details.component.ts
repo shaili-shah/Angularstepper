@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SkillModel } from 'src/app/Models/SkillModel';
 import { TeamService } from 'src/app/services/team.service';
@@ -10,6 +10,8 @@ import { TeamService } from 'src/app/services/team.service';
 })
 export class ProfessionalDetailsComponent implements OnInit {
 
+  @Input('empForm') empForm! : any;
+  
   skillList!: SkillModel[];
   professionalDetailFormGroup!: FormGroup
   constructor(private formBuilder: FormBuilder, private service: TeamService) { }
@@ -25,6 +27,10 @@ export class ProfessionalDetailsComponent implements OnInit {
       this.skillList = data;
     });
 
+  }
+
+  submit(){
+    console.log(this.empForm.controls);
   }
 
 

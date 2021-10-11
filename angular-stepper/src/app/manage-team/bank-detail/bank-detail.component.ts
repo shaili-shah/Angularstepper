@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -8,21 +8,26 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class BankDetailComponent implements OnInit {
 
-  bankDetailFormGroup! : FormGroup
+  @Input('empForm') empForm! : any;
+  //bankDetailFormGroup! : FormGroup
 
   constructor(private formBuilder : FormBuilder) { }
 
   ngOnInit(): void {
-    this.bankDetailFormGroup = this.formBuilder.group({
-      AadharCardNo: ['', Validators.required],
-      AccountNo : ['',Validators.required],
-      IFSC : ['',Validators.required],
-      PanCardNo : ['',Validators.required]
-    });
+    // this.bankDetailFormGroup = this.formBuilder.group({
+    //   AadharCardNo: ['', Validators.required],
+    //   AccountNo : ['',Validators.required],
+    //   IFSC : ['',Validators.required],
+    //   PanCardNo : ['',Validators.required]
+    // });
   }
 
+  // get f(){
+  //   return this.bankDetailFormGroup.controls;
+  // }
+
   get f(){
-    return this.bankDetailFormGroup.controls;
+    return this.empForm.controls.bankDetailFormGroup.controls;
   }
 
 }

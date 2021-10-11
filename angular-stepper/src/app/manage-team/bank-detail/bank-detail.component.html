@@ -1,4 +1,67 @@
-<mat-card>
+<div id="bank-detail" [formGroup]="empForm">
+    <mat-card>
+        <div formGroupName="bankDetailFormGroup">
+            <mat-form-field>
+                <input matInput placeholder="Account Number" formControlName="AccountNo" required>
+                <mat-error *ngIf="f.AccountNo.errors?.required">
+                    Account Number is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div formGroupName="bankDetailFormGroup">
+            <mat-form-field>
+                <input matInput placeholder="IFSC" formControlName="IFSC" pattern="^[A-Za-z]{4}0[A-Z0-9a-z]{6}$"
+                    required>
+                <mat-error *ngIf="f.IFSC.errors?.required">
+                    IFSC is required
+                </mat-error>
+                <mat-error *ngIf="f.IFSC.errors?.pattern">
+                    Invalid IFSC
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div formGroupName="bankDetailFormGroup">
+            <mat-form-field>
+                <input matInput placeholder="PAN Card Number" formControlName="PanCardNo"
+                    pattern="^[A-Za-z]{5}[0-9]{4}[A-Za-z]$" required>
+                <mat-error *ngIf="f.PanCardNo.errors?.required">
+                    PAN Card Number is required
+                </mat-error>
+                <mat-error *ngIf="f.PanCardNo.errors?.pattern">
+                    Invalid PAN Number Format
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div formGroupName="bankDetailFormGroup">
+            <mat-form-field>
+                <input matInput placeholder="Aadhar Card Number" formControlName="AadharCardNo"
+                    pattern="^[0-9]{4}[ -]?[0-9]{4}[ -]?[0-9]{4}$" required>
+                <mat-error *ngIf="f.AadharCardNo.errors?.required">
+                    Aaddhar Card Number is required
+                </mat-error>
+                <mat-error *ngIf="f.AadharCardNo.errors?.pattern">
+                    Invalid Aaddhar Card Number Format
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <stepper-footer></stepper-footer>
+        <mat-card-actions>
+            <button mat-raised-button matStepperPrevious>Back</button>
+            <button mat-raised-button matStepperNext class="nav-btn pull-right">Next</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+
+
+
+
+
+
+<!-- <mat-card>
     <form [formGroup]="bankDetailFormGroup">
         <mat-form-field>
             <input matInput placeholder="Account Number" formControlName="AccountNo" required>
@@ -47,4 +110,4 @@
 
     </form>
 
-</mat-card>
+</mat-card> -->

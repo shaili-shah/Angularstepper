@@ -1,4 +1,48 @@
-<mat-card>
+<div id="professional-detail" [formGroup]="empForm">
+	<mat-card>
+		<div formGroupName="professionalDetailFormGroup">
+			<mat-form-field>
+				<input matInput placeholder="Months" formControlName="month">
+			</mat-form-field>
+		</div>
+
+		<div formGroupName="professionalDetailFormGroup">
+			<mat-form-field>
+				<input matInput placeholder="Years" formControlName="year">
+			</mat-form-field>
+		</div>
+
+		<div formGroupName="professionalDetailFormGroup">
+			<mat-form-field>
+				<mat-select placeholder="Skills" formControlName="skillIds" multiple name="skillIds">
+					<mat-option *ngFor="let skill of skillList" [value]="skill.Id"> {{skill.Name}}</mat-option>
+				</mat-select>
+			</mat-form-field>
+		</div>
+
+		<stepper-footer></stepper-footer>
+		<mat-card-actions>
+			<button mat-raised-button matStepperPrevious>Back</button>
+			<button mat-raised-button class="nav-btn pull-right" (click)="submit()"  >Finish</button>
+		</mat-card-actions>
+	</mat-card>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <mat-card>
 
 	<form [formGroup]="professionalDetailFormGroup">
 
@@ -24,4 +68,4 @@
 
 	</form>
 
-</mat-card>
+</mat-card> -->

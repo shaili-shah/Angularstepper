@@ -1,15 +1,44 @@
-<mat-horizontal-stepper linear #stepper>
-	<mat-step [stepControl]="personalDetailForm">
-		<ng-template matStepLabel>Personal Details</ng-template>
-		<personal-details #step1></personal-details>
-	</mat-step>
-	<mat-step [stepControl]="bankDetailForm">
-		<ng-template matStepLabel>Bank Details</ng-template>
-    <bank-detail #step2></bank-detail>
-	</mat-step>
-	<mat-step [stepControl]="professionalDetailForm">
-		<ng-template matStepLabel>Professional Details</ng-template>
-    <professional-details #step3></professional-details>
-	</mat-step>
-</mat-horizontal-stepper>
+<div id="employee">
+	<form id="empForm" [formGroup] = "employeeForm">
+		<mat-horizontal-stepper linear #stepper>
+			<mat-step [stepControl]="employeeForm.get('personalDetailFormGroup')?.value" formGroupName = "personalDetailFormGroup" >
+				<ng-template matStepLabel>Personal Details</ng-template>
+				<personal-details [empForm] = "employeeForm"></personal-details>
+			</mat-step>
+			<mat-step [stepControl]="employeeForm.get('bankDetailFormGroup')?.value" formGroupName = "bankDetailFormGroup">
+				<ng-template matStepLabel>Bank Details</ng-template>
+			<bank-detail [empForm] = "employeeForm"></bank-detail>
+			</mat-step>
+			<mat-step [stepControl]="employeeForm.get('professionalDetailFormGroup')?.value" formGroupName = "professionalDetailFormGroup">
+				<ng-template matStepLabel>Professional Details</ng-template>
+			<professional-details [empForm] = "employeeForm"></professional-details>
+			</mat-step>
+		</mat-horizontal-stepper>
+	</form>
+</div>
 
+
+
+
+
+
+
+
+<!-- <div id="employee">
+	<form id="empForm" [formGroup] = "employeeForm">
+		<mat-horizontal-stepper linear #stepper>
+			<mat-step [stepControl]="personalDetailForm" formGroupName = "personalDetailFormGroup" >
+				<ng-template matStepLabel>Personal Details</ng-template>
+				<personal-details [empForm] = "employeeForm"></personal-details>
+			</mat-step>
+			<mat-step [stepControl]="bankDetailForm" formGroupName = "bankDetailFormGroup">
+				<ng-template matStepLabel>Bank Details</ng-template>
+			<bank-detail [empForm] = "employeeForm"></bank-detail>
+			</mat-step>
+			<mat-step [stepControl]="professionalDetailForm" formGroupName = "professionalDetailFormGroup">
+				<ng-template matStepLabel>Professional Details</ng-template>
+			<professional-details [empForm] = "employeeForm"></professional-details>
+			</mat-step>
+		</mat-horizontal-stepper>
+	</form>
+</div> -->

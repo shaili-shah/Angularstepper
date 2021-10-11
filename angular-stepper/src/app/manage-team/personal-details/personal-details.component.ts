@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { requiredFileType } from 'src/app/validators/requiredFileType';
 
@@ -9,6 +9,7 @@ import { requiredFileType } from 'src/app/validators/requiredFileType';
 })
 export class PersonalDetailsComponent implements OnInit {
 
+  @Input('empForm') empForm! : any;
   private base64textString: String = "";
 
   public imagePath: any;
@@ -25,7 +26,8 @@ export class PersonalDetailsComponent implements OnInit {
 
     let result = requiredFileType('png', this.file!);
     if (result?.requiredFileType) {
-      this.personalDetailFormGroup.get('image')?.setErrors({ invalid: 'Invalid File' });
+      this.empForm.get('personalDetailFormGroup').controls.image?.setErrors({ invalid: 'Invalid File' });
+     // this.personalDetailFormGroup.get('image')?.setErrors({ invalid: 'Invalid File' });
     }
 
     if (file) {
@@ -33,8 +35,8 @@ export class PersonalDetailsComponent implements OnInit {
       reader.onload = this._handleReaderLoaded.bind(this);
       reader.readAsBinaryString(file);
     }
-
-    this.personalDetailFormGroup.value.image = file;
+    this.empForm.get('personalDetailFormGroup').value.image  = file;
+    //this.personalDetailFormGroup.value.image = file;
   }
 
   _handleReaderLoaded(readerEvt: any) {
@@ -46,18 +48,19 @@ export class PersonalDetailsComponent implements OnInit {
     private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    this.personalDetailFormGroup = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      birthDate: ['', Validators.required],
-      phone: ['', Validators.required],
-      email: ['', Validators.required],
-      image: ['']
-    });
+    // this.personalDetailFormGroup = this.formBuilder.group({
+    //   firstName: ['', Validators.required],
+    //   lastName: ['', Validators.required],
+    //   birthDate: ['', Validators.required],
+    //   phone: ['', Validators.required],
+    //   email: ['', Validators.required],
+    //   image: ['']
+    // });
   }
 
   get f() {
-    return this.personalDetailFormGroup.controls;
+    return this.empForm.controls.personalDetailFormGroup.controls;
+   // return this.personalDetailFormGroup.controls;
   }
 
   preview(files: any) {
