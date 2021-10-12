@@ -25,6 +25,8 @@ import { ProfessionalDetailsComponent } from './manage-team/professional-details
 import { MatNativeDateModule } from '@angular/material/core';
 import { StepperFooterComponent } from './manage-team/stepper-footer/stepper-footer.component';
 import { CurrentStatusComponent } from './manage-team/current-status/current-status.component';
+import { ExperienceDetailComponent } from './manage-team/experience-detail/experience-detail.component';
+import { EducationDetailComponent } from './manage-team/education-detail/education-detail.component';
 
 
 @NgModule({
@@ -37,7 +39,9 @@ import { CurrentStatusComponent } from './manage-team/current-status/current-sta
     BankDetailComponent,
     ProfessionalDetailsComponent,
     StepperFooterComponent,
-    CurrentStatusComponent
+    CurrentStatusComponent,
+    ExperienceDetailComponent,
+    EducationDetailComponent
   
   ],
   imports: [

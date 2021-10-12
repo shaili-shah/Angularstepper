@@ -1,0 +1,70 @@
+<div id="experience-detail" [formGroup]="empForm">
+  <mat-card>
+    <div formGroupName="experienceDetailFormGroup">
+      <div formArrayName="experienceDetail">
+        <button type="button" 
+        (click)="this.addExperienceDetail.emit();" 
+        class="btn btn-primary set-add-btn">Add More
+      </button>
+
+        <div class = "set-div"
+        *ngFor="let item of empForm.get('experienceDetailFormGroup').get('experienceDetail').controls; let i=index"
+          [formGroupName]="i">
+
+          <mat-form-field>
+            <input matInput placeholder="Company" formControlName="Company" required>
+            <mat-error *ngIf="f?.controls[i].controls?.Company.errors?.required">
+              Company is required
+            </mat-error>
+          </mat-form-field>
+
+          <div>
+            <mat-form-field>
+              <input matInput placeholder="Designation" formControlName="Designation">
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field>
+              <input matInput placeholder="Department" formControlName="Department">
+
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field>
+              <input matInput placeholder="CTC" formControlName="CTC">
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field>
+              <input matInput [matDatepicker]="picker3" autocomplete="off" [max]="today" formControlName="From"
+                placeholder="From">
+              <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+              <mat-datepicker #picker3 color="primary"></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field>
+              <input matInput [matDatepicker]="picker" autocomplete="off" formControlName="To"
+                placeholder="To">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker color="primary"></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <button (click)="this.removeExperienceDetail.emit()" class="btn btn-danger">Remove</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- {{this.empForm.value | json}} -->
+    <stepper-footer></stepper-footer>
+    <mat-card-actions>
+      <button mat-raised-button matStepperPrevious>Back</button>
+      <button mat-raised-button matStepperNext class="nav-btn pull-right">Next</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
