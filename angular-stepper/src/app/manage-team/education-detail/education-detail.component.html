@@ -1,1 +1,51 @@
-<p>education-detail works!</p>
+<div id="education-detail" [formGroup]="empForm">
+    <mat-card>
+        <div formGroupName="educationDetailFormGroup">
+            <div formArrayName="educationDetail">
+                <button type="button" (click)="this.addEducationDetail.emit();" class="btn btn-primary set-add-btn">Add
+                    More
+                </button>
+
+                <div class="set-div"
+                    *ngFor="let item of empForm.get('educationDetailFormGroup').get('educationDetail').controls; let i=index"
+                    [formGroupName]="i">
+
+                    <mat-form-field>
+                        <input matInput placeholder="Course" formControlName="Course" required>
+                        <mat-error *ngIf="f?.controls[i].controls?.Course.errors?.required">
+                            Course is required
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <input matInput placeholder="University" formControlName="University" required>
+                        <mat-error *ngIf="f?.controls[i].controls?.University.errors?.required">
+                            University is required
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="picker3" autocomplete="off" [max]="today" formControlName="PassedOn"
+                          placeholder="Passed On">
+                        <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                        <mat-datepicker #picker3 color="primary"></mat-datepicker>
+                      </mat-form-field>
+                    
+                    <mat-form-field>
+                        <input matInput placeholder="Grade" formControlName="Grade">
+                    </mat-form-field>
+
+                    <button (click)="this.removeEducationDetail.emit()" class="btn btn-danger">Remove</button>
+                </div>
+            </div>
+        </div>
+
+        <stepper-footer></stepper-footer>
+        <mat-card-actions>
+            <button mat-raised-button matStepperPrevious>Back</button>
+            <button mat-raised-button class="nav-btn pull-right" (click)="submit()"  >Finish</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+<!-- 
+{{ this.empForm.value | json }} -->

@@ -48,6 +48,10 @@ export class ManageTeamComponent implements OnInit {
 
       experienceDetailFormGroup: this.formBuilder.group({
         experienceDetail: this.formBuilder.array([])
+      }),
+
+      educationDetailFormGroup : this.formBuilder.group({
+        educationDetail : this.formBuilder.array([])
       })
 
     })
@@ -74,6 +78,27 @@ export class ManageTeamComponent implements OnInit {
 
   removeExperienceDetail(i:number) {
     this.experienceDetailFn().removeAt(i);
+  }
+
+  educationDetail() : FormArray{
+    return this.employeeForm.get('educationDetailFormGroup')?.get('educationDetail') as FormArray
+  }
+
+  newEducationDetail() : FormGroup{
+    return this.formBuilder.group({
+      Course : ['',Validators.required],
+      University : [''],
+      PassedOn : [''],
+      Grade : ['']
+    })
+  }
+
+  addEducationDetail(){
+    this.educationDetail().push(this.newEducationDetail());
+  }
+
+  removeEducationDetail(i : number){
+    this.educationDetail().removeAt(i);
   }
 
  

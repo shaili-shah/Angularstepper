@@ -20,13 +20,21 @@
 				<ng-template matStepLabel>Current Status</ng-template>
 				<current-status [empForm] = "employeeForm"></current-status>
 			</mat-step>
-			
+
 			<mat-step [stepControl]="employeeForm.get('experienceDetailFormGroup')?.value" formGroupName = "experienceDetailFormGroup">
 				<ng-template matStepLabel>Experience Detail</ng-template>
 				<experience-detail [empForm] = "employeeForm" 
 				(addExperienceDetail) ="addExperienceDetail()"
-				(removeExperienceDetail) = "removeExperienceDetail($event)"
-				></experience-detail>
+				(removeExperienceDetail) = "removeExperienceDetail($event)" >
+			</experience-detail>
+			</mat-step>
+
+			<mat-step [stepControl]="employeeForm.get('educationDetailFormGroup')?.value" formGroupName = "educationDetailFormGroup">
+				<ng-template matStepLabel>Education Detail</ng-template>
+				<education-detail [empForm] = "employeeForm"
+				(addEducationDetail) = "addEducationDetail()"
+				(removeEducationDetail) = "removeEducationDetail($event)" >
+				</education-detail>
 			</mat-step>
 			
 		</mat-horizontal-stepper>
