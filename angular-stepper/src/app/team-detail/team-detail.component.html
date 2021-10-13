@@ -10,6 +10,7 @@
     <table class="table table-striped">
       <thead>
         <tr>
+          <th scope="col" sortable="Id" hidden>Id</th>
           <th scope="col" sortable="FirstName">Name</th>
           <th scope="col" sortable="Department">Department</th>
           <th scope="col" sortable="Designation">Designation</th>
@@ -17,8 +18,10 @@
       </thead>
       <tbody>
       
-          <tr
+          <tr class="clickable"
+          [routerLink]="['/manageTeam', emp.Id]"
           *ngFor="let emp of employees  | slice: (page-1) * pageSize : page * pageSize">
+          <td hidden> {{ emp?.Id }} </td>
           <td>{{ emp?.FirstName  }} {{ emp?.LastName }} </td>
           <td>{{ emp.CurrentStatus[0].Department }}</td>
           <td> {{ emp.CurrentStatus[0].Designation }} </td>

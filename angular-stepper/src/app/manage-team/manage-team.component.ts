@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { TeamService } from '../services/team.service';
 
 @Component({
   selector: 'app-manage-team',
@@ -10,9 +12,16 @@ export class ManageTeamComponent implements OnInit {
 
   employeeForm!: FormGroup
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder , 
+    private service : TeamService ,
+    private route : ActivatedRoute ) { }
 
   ngOnInit(): void {
+
+    const detailId  = this.route.snapshot.paramMap.get('id') || 0 ;
+    const id : number = +detailId;
+    this.service.GetTeamDetailById(id);
+
     this.employeeForm = this.formBuilder.group({
 
       personalDetailFormGroup: this.formBuilder.group({

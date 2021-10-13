@@ -1,5 +1,6 @@
 import { Component, ElementRef, HostListener, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TeamService } from 'src/app/services/team.service';
 import { requiredFileType } from 'src/app/validators/requiredFileType';
 
 @Component({
@@ -10,6 +11,7 @@ import { requiredFileType } from 'src/app/validators/requiredFileType';
 export class PersonalDetailsComponent implements OnInit {
 
   @Input('empForm') empForm! : any;
+  @Input('imageBase64') imageBase64  : string = "";
   private base64textString: String = "";
 
   public imagePath: any;
@@ -40,10 +42,12 @@ export class PersonalDetailsComponent implements OnInit {
   _handleReaderLoaded(readerEvt: any) {
     var binaryString = readerEvt.target.result;
     this.base64textString = btoa(binaryString);
+    this.service.data  = this.base64textString
+
   }
 
   constructor(private host: ElementRef<HTMLInputElement>,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder , private service : TeamService) { }
 
   ngOnInit(): void {
   }

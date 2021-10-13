@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   baseURL : 'http://localhost/StepperAPI'
+  //baseURL : 'https://localhost:44372/'
 };
 
 /*

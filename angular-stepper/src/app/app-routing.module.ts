@@ -8,6 +8,7 @@ const routes: Routes = [
   { path : '' , redirectTo : '/teamDetail', pathMatch : "full" },
   { path : 'teamDetail' , component : TeamDetailComponent },
   { path : 'manageTeam' , component : ManageTeamComponent },
+  { path : 'manageTeam/:id' , component : ManageTeamComponent },
   { path : '**' , component : NotFoundComponent }
 ];
 

@@ -26,6 +26,25 @@ export class TeamService  {
   constructor(public http : HttpClient) {
    }
 
+   imageBase64! : string;
+   resumeBase64! : string;
+
+   get data(): any{
+    return this.imageBase64;
+  }
+
+  set data(val: any){
+    this.imageBase64 = val;
+  }
+
+  get resume(): any{
+    return this.resumeBase64;
+  }
+
+  set resume(val: any){
+    this.resumeBase64 = val;
+  }
+
    getAllEmployees(): Observable<any> {
     return this.http.get(`${this.baseUrl}/User/GetPersonalDetail`);
   }
@@ -40,6 +59,10 @@ export class TeamService  {
         'Content-Type': 'application/json'
       }
      )});
+  }
+
+  GetTeamDetailById(id : number) : Observable<any> {
+    return this.http.get(`${this.baseUrl}/User/GetTeamDetailById`);
   }
 
    

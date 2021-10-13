@@ -33,6 +33,7 @@ export class ProfessionalDetailsComponent implements OnInit {
   _handleReaderLoaded(readerEvt: any) {
     var binaryString = readerEvt.target.result;
     this.base64textString = btoa(binaryString);
+    this.service.resume = this.base64textString;
   }
 
   constructor(private formBuilder: FormBuilder, private service: TeamService) { }

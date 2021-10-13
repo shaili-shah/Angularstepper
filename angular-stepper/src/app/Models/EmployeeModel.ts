@@ -6,7 +6,7 @@ export interface EmployeeModel {
     Phone  : string;
     Email : string;
     FileId : number;
-    FileModel : FileModel;
+    FileModel? : FileModel;
     BankDetailId : number;
     IFSC : string;
     AccountNo : string;
@@ -18,7 +18,7 @@ export interface EmployeeModel {
     SkillIds : [];
     LstSkills : [];
     ResumeFileId : number;
-    ResumeFileModel : FileModel;
+    ResumeFileModel? : FileModel;
     CurrentStatusId : number;
     Company : string;
     Designation : string;
@@ -29,14 +29,14 @@ export interface EmployeeModel {
     LstEducationDetailModel : Array<EducationDetailModel>;
   } 
 
-  interface FileModel{
+ export interface FileModel{
     Id: number,
     Name: string,
     ContentType: string,
     Data: string
   }
 
-  interface ExprienceDetailModel{
+ export interface ExprienceDetailModel{
     Id : number;
     Company : string;
     Designation : string;
@@ -47,7 +47,7 @@ export interface EmployeeModel {
     DetailId : number;
   }
 
-  interface EducationDetailModel{
+export interface EducationDetailModel{
     Id : number;
     Course : string;
     University : string;

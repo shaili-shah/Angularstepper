@@ -31,7 +31,7 @@
     <div formGroupName="personalDetailFormGroup">
       <mat-form-field>
         <input matInput [matDatepicker]="picker3" autocomplete="off" [max]="today" formControlName="birthDate"
-          placeholder="Date Of Birth" required>
+          placeholder="Date Of Birth" required >
         <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
         <mat-datepicker #picker3 color="primary"></mat-datepicker>
         <mat-error *ngIf="f.birthDate.errors?.required">
