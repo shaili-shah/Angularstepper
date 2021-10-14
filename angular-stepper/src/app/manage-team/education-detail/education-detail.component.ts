@@ -33,9 +33,10 @@ export class EducationDetailComponent implements OnInit {
 
   submit() {
     this.model = this.empForm.value as EmployeeModel;
-    //console.log(this.model);
-    //console.log(this.model.personalDetailFormGroup.image);
+    
     this.imageBase64 = this.service.data;
+
+    
 
     let obj: EmployeeModel = {
       Id: 0,
@@ -93,7 +94,6 @@ export class EducationDetailComponent implements OnInit {
       } else {
         alert('Add Employee Failed!');
       }
-      //console.log(data);
     }, error => {
       console.log(error);
       this.errors = error

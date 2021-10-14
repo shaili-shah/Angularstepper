@@ -61,8 +61,16 @@ export class TeamService  {
      )});
   }
 
+  EditTeamDetail(model : EmployeeModel){
+    return this.http.post(`${this.baseUrl}/User/EditTeamDetail`, model ,{headers: new HttpHeaders( 
+      {
+        'Content-Type': 'application/json'
+      }
+     )});
+  }
+
   GetTeamDetailById(id : number) : Observable<any> {
-    return this.http.get(`${this.baseUrl}/User/GetTeamDetailById`);
+    return this.http.get(`${this.baseUrl}/User/GetTeamDetailById?id=`+id);
   }
 
    

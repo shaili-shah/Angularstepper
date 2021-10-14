@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { TeamService } from '../services/team.service';
@@ -12,15 +12,76 @@ export class ManageTeamComponent implements OnInit {
 
   employeeForm!: FormGroup
 
-  constructor(private formBuilder: FormBuilder , 
-    private service : TeamService ,
-    private route : ActivatedRoute ) { }
+  constructor(private formBuilder: FormBuilder,
+    private service: TeamService,
+    private route: ActivatedRoute,
+    private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
 
-    const detailId  = this.route.snapshot.paramMap.get('id') || 0 ;
-    const id : number = +detailId;
-    this.service.GetTeamDetailById(id);
+    const detailId = this.route.snapshot.paramMap.get('id') || 0;
+    const id: number = +detailId;
+    this.service.GetTeamDetailById(id).subscribe(data => {
+
+      console.log(data);
+      if (data) {
+        this.employeeForm.patchValue({
+          personalDetailFormGroup: {
+            firstName: data.FirstName,
+            lastName: data.LastName,
+            birthDate: data.BirthDate,
+            phone: data.Phone,
+            email: data.Email
+            //image: data.FileModel
+          },
+          bankDetailFormGroup: {
+            AadharCardNo: data.AadharCardNo,
+            AccountNo: data.AccountNo,
+            IFSC: data.IFSC,
+            PanCardNo: data.PanCardNo
+          },
+          professionalDetailFormGroup: {
+            month: data.Month,
+            year: data.Year,
+            skillIds: data.SkillIds
+            //resume: data.ResumeFileModel
+          },
+          currentStatusFormGroup: {
+            CTC: data.CTC,
+            Company: data.Company,
+            Department: data.Department,
+            Designation: data.Designation,
+            WorkingFrom: data.WorkingFrom
+          }
+
+        });
+
+        let control = this.experienceDetailFn();
+        data.LstExprienceDetailModel.forEach((x: any) => {
+          control.push(this.formBuilder.group({
+            Company: x.Company,
+            Department: x.Department,
+            Designation: x.Designation,
+            From: x.From,
+            To: x.To,
+            CTC: x.CTC
+          }));
+        });
+
+        let controlExperience = this.educationDetail();
+        data.LstEducationDetailModel.forEach((i: any) => {
+          controlExperience.push(this.formBuilder.group({
+            Course: i.Course,
+            University: i.University,
+            PassedOn: i.PassedOn,
+            Grade: i.Grade
+          }));
+        });
+
+      }
+    }, error => {
+      console.log(error);
+    });
 
     this.employeeForm = this.formBuilder.group({
 
@@ -59,8 +120,8 @@ export class ManageTeamComponent implements OnInit {
         experienceDetail: this.formBuilder.array([])
       }),
 
-      educationDetailFormGroup : this.formBuilder.group({
-        educationDetail : this.formBuilder.array([])
+      educationDetailFormGroup: this.formBuilder.group({
+        educationDetail: this.formBuilder.array([])
       })
 
     })
@@ -76,7 +137,7 @@ export class ManageTeamComponent implements OnInit {
       Department: [''],
       Designation: [''],
       From: [''],
-      To : [''],
+      To: [''],
       CTC: ['']
     })
   }
@@ -85,31 +146,31 @@ export class ManageTeamComponent implements OnInit {
     this.experienceDetailFn().push(this.newExperienceDetail());
   }
 
-  removeExperienceDetail(i:number) {
+  removeExperienceDetail(i: number) {
     this.experienceDetailFn().removeAt(i);
   }
 
-  educationDetail() : FormArray{
+  educationDetail(): FormArray {
     return this.employeeForm.get('educationDetailFormGroup')?.get('educationDetail') as FormArray
   }
 
-  newEducationDetail() : FormGroup{
+  newEducationDetail(): FormGroup {
     return this.formBuilder.group({
-      Course : ['',Validators.required],
-      University : [''],
-      PassedOn : [''],
-      Grade : ['']
+      Course: ['', Validators.required],
+      University: [''],
+      PassedOn: [''],
+      Grade: ['']
     })
   }
 
-  addEducationDetail(){
+  addEducationDetail() {
     this.educationDetail().push(this.newEducationDetail());
   }
 
-  removeEducationDetail(i : number){
+  removeEducationDetail(i: number) {
     this.educationDetail().removeAt(i);
   }
 
- 
+
 
 }
