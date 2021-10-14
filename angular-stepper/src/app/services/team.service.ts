@@ -61,7 +61,7 @@ export class TeamService  {
      )});
   }
 
-  EditTeamDetail(model : EmployeeModel){
+  EditEmployeeDetail(model : EmployeeModel){
     return this.http.post(`${this.baseUrl}/User/EditTeamDetail`, model ,{headers: new HttpHeaders( 
       {
         'Content-Type': 'application/json'

@@ -133,6 +133,7 @@ export class ManageTeamComponent implements OnInit {
 
   newExperienceDetail(): FormGroup {
     return this.formBuilder.group({
+      DetailId : [''],
       Company: ['', Validators.required],
       Department: [''],
       Designation: [''],
