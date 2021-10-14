@@ -11,41 +11,41 @@ const headerDict = {
   'Access-Control-Allow-Headers': 'Content-Type',
 }
 
-const requestOptions = {                                                                                                                                                                                 
-  headers: new Headers(headerDict), 
+const requestOptions = {
+  headers: new Headers(headerDict),
 };
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class TeamService  {
+export class TeamService {
 
   private baseUrl = environment.baseURL;
 
-  constructor(public http : HttpClient) {
-   }
+  constructor(public http: HttpClient) {
+  }
 
-   imageBase64! : string;
-   resumeBase64! : string;
+  imageBase64!: string;
+  resumeBase64!: string;
 
-   get data(): any{
+  get data(): any {
     return this.imageBase64;
   }
 
-  set data(val: any){
+  set data(val: any) {
     this.imageBase64 = val;
   }
 
-  get resume(): any{
+  get resume(): any {
     return this.resumeBase64;
   }
 
-  set resume(val: any){
+  set resume(val: any) {
     this.resumeBase64 = val;
   }
 
-   getAllEmployees(): Observable<any> {
+  getAllEmployees(): Observable<any> {
     return this.http.get(`${this.baseUrl}/User/GetPersonalDetail`);
   }
 
@@ -53,25 +53,32 @@ export class TeamService  {
     return this.http.get(`${this.baseUrl}/User/GetAllSkills`);
   }
 
-  AddEmployeeDetail(model : EmployeeModel){
-    return this.http.post(`${this.baseUrl}/User/AddTeamDetail`, model ,{headers: new HttpHeaders( 
-      {
-        'Content-Type': 'application/json'
-      }
-     )});
+  GetTeamDetailById(id: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/User/GetTeamDetailById?id=` + id);
   }
 
-  EditEmployeeDetail(model : EmployeeModel){
-    return this.http.post(`${this.baseUrl}/User/EditTeamDetail`, model ,{headers: new HttpHeaders( 
-      {
-        'Content-Type': 'application/json'
-      }
-     )});
+  AddEmployeeDetail(model: EmployeeModel) {
+    return this.http.post(`${this.baseUrl}/User/AddTeamDetail`, model, {
+      headers: new HttpHeaders(
+        {
+          'Content-Type': 'application/json'
+        }
+      )
+    });
   }
 
-  GetTeamDetailById(id : number) : Observable<any> {
-    return this.http.get(`${this.baseUrl}/User/GetTeamDetailById?id=`+id);
+  EditEmployeeDetail(model: EmployeeModel) {
+    return this.http.post(`${this.baseUrl}/User/EditTeamDetail`, model, {
+      headers: new HttpHeaders(
+        {
+          'Content-Type': 'application/json'
+        }
+      )
+    });
   }
 
-   
+  DeleteEmployeeDetail(id: number) {
+    return this.http.delete(`${this.baseUrl}/User/DeleteTeamDetail?id=` + id);
+  }
+
 }

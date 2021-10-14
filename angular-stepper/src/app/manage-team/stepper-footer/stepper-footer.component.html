@@ -1,3 +1,6 @@
 <mat-card-actions>
     <button mat-raised-button [routerLink]="'/teamDetail'">Exit</button>
+    <button mat-raised-button 
+    [disabled]="id <= 0"
+    (click)="delete()" >Remove</button>
 </mat-card-actions>
