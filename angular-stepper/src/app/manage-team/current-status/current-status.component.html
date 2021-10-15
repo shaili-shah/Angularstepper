@@ -6,10 +6,8 @@
 				<input matInput placeholder="Company" 
 				formControlName="Company" 
                 type="text"
-                [(ngModel)]="company"
-                
 				required>
-               
+				
                 <mat-error *ngIf = "f.Company?.errors?.required" >
                     Company is required
                 </mat-error>

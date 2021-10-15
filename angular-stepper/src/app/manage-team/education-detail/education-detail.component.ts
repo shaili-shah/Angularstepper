@@ -38,19 +38,11 @@ export class EducationDetailComponent implements OnInit {
 
     this.model = this.empForm.value as EmployeeModel;
     this.imageBase64 = this.service.data;
-    console.log(this.empForm.value);
-
+   
     const detailId = this.route.snapshot.paramMap.get('id') || 0;
     const id: number = +detailId;
 
     if (id > 0) {
-
-      //console.log(this.empForm.controls.experienceDetailFormGroup.controls.experienceDetail.controls);
-
-     // debugger;
-      this.model.experienceDetailFormGroup.experienceDetail  = this.model.experienceDetailFormGroup.experienceDetail?.forEach((x : any) => x.DetailId == id);
-      this.model.educationDetailFormGroup.educationDetail = this.model.educationDetailFormGroup.educationDetail?.forEach((x : any) => x.DetailId == id);
-
       this.service.GetTeamDetailById(id).subscribe(data => {
         let editObj: EmployeeModel = {
           Id: data.Id,
@@ -96,11 +88,15 @@ export class EducationDetailComponent implements OnInit {
           LstEducationDetailModel: this.model.educationDetailFormGroup.educationDetail
 
         };
-        
-        console.log('editObj', editObj);
-
+        editObj.LstExprienceDetailModel.forEach(function(value){
+          value.DetailId = data.Id;
+        })
+        editObj.LstEducationDetailModel.forEach(function(value){
+          value.DetailId = data.Id;
+        })
+       
         this.service.EditEmployeeDetail(editObj).subscribe((data: any) => {
-          console.log(data.m_Item2)
+         
           if (data.m_Item2) {
             alert('Employee Updated successfully');
             this.router.navigate(['/teamDetail']);
@@ -117,8 +113,7 @@ export class EducationDetailComponent implements OnInit {
 
     }
     if (id == 0) {
-      this.model.experienceDetailFormGroup.experienceDetail  = this.model.experienceDetailFormGroup?.experienceDetail?.forEach((x : any) => x.DetailId == id);
-      this.model.educationDetailFormGroup.educationDetail = this.model.educationDetailFormGroup?.educationDetail?.forEach((x : any) => x.DetailId == id);
+      
       let obj: EmployeeModel = {
         Id: 0,
         FirstName: this.model.personalDetailFormGroup.firstName,
@@ -159,15 +154,21 @@ export class EducationDetailComponent implements OnInit {
         Department: this.model.currentStatusFormGroup.Department,
         CTC: this.model.currentStatusFormGroup.CTC,
         WorkingFrom: this.model.currentStatusFormGroup.WorkingFrom,
-
         LstExprienceDetailModel: this.model.experienceDetailFormGroup.experienceDetail,
         LstEducationDetailModel: this.model.educationDetailFormGroup.educationDetail
-
-
       };
-     
+      if(obj.LstExprienceDetailModel.length > 0){
+        obj.LstExprienceDetailModel.forEach(function (value) {
+          value.DetailId = 0;
+          });
+      }
+      if(obj.LstEducationDetailModel.length > 0){
+        obj.LstEducationDetailModel.forEach(function (value) {
+          value.DetailId = 0;
+          });
+      }
+    
       this.service.AddEmployeeDetail(obj).subscribe((data: any) => {
-        console.log(data.m_Item2)
         if (data.m_Item2) {
           alert('Employee Added successfully');
           this.router.navigate(['/teamDetail']);

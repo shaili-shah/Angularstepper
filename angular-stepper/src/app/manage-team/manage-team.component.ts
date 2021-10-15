@@ -23,7 +23,6 @@ export class ManageTeamComponent implements OnInit {
     const id: number = +detailId;
     this.service.GetTeamDetailById(id).subscribe(data => {
 
-      console.log(data);
       if (data) {
         this.employeeForm.patchValue({
           personalDetailFormGroup: {
@@ -32,7 +31,7 @@ export class ManageTeamComponent implements OnInit {
             birthDate: data.BirthDate,
             phone: data.Phone,
             email: data.Email
-            //image: data.FileModel
+           //image: data.FileModel
           },
           bankDetailFormGroup: {
             AadharCardNo: data.AadharCardNo,
@@ -59,6 +58,7 @@ export class ManageTeamComponent implements OnInit {
         let control = this.experienceDetailFn();
         data.LstExprienceDetailModel.forEach((x: any) => {
           control.push(this.formBuilder.group({
+            DetailId : id,
             Company: x.Company,
             Department: x.Department,
             Designation: x.Designation,
@@ -71,13 +71,14 @@ export class ManageTeamComponent implements OnInit {
         let controlExperience = this.educationDetail();
         data.LstEducationDetailModel.forEach((i: any) => {
           controlExperience.push(this.formBuilder.group({
+            DetailId : id,
             Course: i.Course,
             University: i.University,
             PassedOn: i.PassedOn,
             Grade: i.Grade
           }));
         });
-
+       
       }
     }, error => {
       console.log(error);
@@ -123,7 +124,7 @@ export class ManageTeamComponent implements OnInit {
       educationDetailFormGroup: this.formBuilder.group({
         educationDetail: this.formBuilder.array([])
       })
-
+      
     })
   }
 
@@ -157,9 +158,10 @@ export class ManageTeamComponent implements OnInit {
 
   newEducationDetail(): FormGroup {
     return this.formBuilder.group({
+      DetailId : [],
       Course: ['', Validators.required],
       University: [''],
-      PassedOn: [''],
+      PassedOn: ['',Validators.required],
       Grade: ['']
     })
   }

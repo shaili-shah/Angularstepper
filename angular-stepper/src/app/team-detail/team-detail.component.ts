@@ -9,7 +9,7 @@ import { TeamService } from '../services/team.service';
   styleUrls: ['./team-detail.component.css']
 })
 
-export class TeamDetailComponent implements OnInit { 
+export class TeamDetailComponent implements OnInit {
 
   searchTerm!: string;
   page = 1;
@@ -18,23 +18,22 @@ export class TeamDetailComponent implements OnInit {
   employees!: TeamGridModel[];
   allEmployees!: TeamGridModel[];
 
-  constructor(private http: HttpClient ,private service : TeamService) {
-   }
+  constructor(private http: HttpClient, private service: TeamService) {
+  }
 
   ngOnInit(): void {
 
     this.service.getAllEmployees()
       .subscribe((data) => {
-       
+
         this.collectionSize = data.length;
-       this.employees = data;
-       console.log(this.employees);
-       this.allEmployees = this.employees;
+        this.employees = data;
+        this.allEmployees = this.employees;
       });
   }
 
   search(value: any): void {
-   let searchVal  = value.data || "";
+    let searchVal = value.data || "";
     this.employees = this.allEmployees.filter((val) => val.FirstName.toLowerCase().includes(searchVal));
     this.collectionSize = this.employees.length;
   }
